@@ -22,8 +22,11 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $token = $user->createToken('DanakuAppToken')->plainTextToken;
+
         return response()->json([
             'message' => 'Pendaftaran sukses!',
+            'token' => $token,
             'user' => $user
         ], 201);
     }

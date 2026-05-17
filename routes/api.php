@@ -6,6 +6,13 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\BackupController;
 
 // Rute Publik (Bisa diakses tanpa login)
+Route::get('/', function () {
+    return response()->json([
+        'status' => 'online',
+        'message' => 'API Awan DanakuApp aktif dan siap melayani!'
+    ]);
+});
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
